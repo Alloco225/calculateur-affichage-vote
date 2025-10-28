@@ -72,7 +72,7 @@ export const CandidateForm = ({ onAdd }: CandidateFormProps) => {
 					<Input id="image" type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
 					<div
 						onClick={() => document.getElementById("image")?.click()}
-						className="flex-1 h-auto max-h-[120px] overflow-hidden w-32  border border-border cursor-pointer flex items-center justify-center bg-background hover:bg-muted transition-colors">
+						className="flex-1 h-auto max-h-[120px] overflow-hidden w-32  border border-border cursor-pointer flex items-center justify-center bg-background hover:bg-muted/10 transition-colors">
 						{image ? <img src={image} alt="Aperçu" className="w-full h-auto object-cover" /> : <Camera className="h-8 w-8 text-muted-foreground" />}
 					</div>
 				</div>

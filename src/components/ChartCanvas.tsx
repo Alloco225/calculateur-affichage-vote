@@ -39,7 +39,7 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
 
         {sortedCandidates.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-xl" style={{ color: "hsl(var(--muted-foreground))" }}>
+            <p className="text-xl text-white">
               Ajoutez des candidats pour voir le graphique
             </p>
           </div>

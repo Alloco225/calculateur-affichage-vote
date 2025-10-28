@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Download, Save, FileText } from "lucide-react";
+import { Download, Save, FileText, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 
@@ -57,7 +57,7 @@ const Index = () => {
 
   const handleNew = () => {
     newCampaign();
-    toast.success("Nouvelle campagne créée");
+    toast.success("Formulaire réinitialisé");
   };
 
   return (
@@ -65,18 +65,18 @@ const Index = () => {
 			{/* Canvas central */}
 			<div className="relative flex-1 bg-canvas overflow-auto">
 				<img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
-				<div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
+				<div className="absolute top-0 left-0 w-full h-full bg-white/60"></div>
+				<div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
 				<ChartCanvas title={currentCampaign.title} location={currentCampaign.location} candidates={currentCampaign.candidates} />
 			</div>
 
 			{/* Panneau latéral droit */}
 			<div className="w-96 bg-card border-l border-border flex flex-col">
-				<div className="sticky top-0 p-3 border-b shadow">
+				{/* <div className="sticky top-0 p-3 border-b shadow">
 					<h2 className="text-xl font-bold text-center">Visualisateur de résultats de vote</h2>
-				</div>
-				<div className="">
-					<Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
-						<TabsList className="w-full rounded-none">
+				</div> */}
+					<Tabs  value={activeTab} onValueChange={setActiveTab} className="flex-1 bg-background">
+						<TabsList className="w-full rounded-none bg-background">
 							<TabsTrigger value="edit" className="flex-1">
 								Formulaire
 							</TabsTrigger>
@@ -86,51 +86,57 @@ const Index = () => {
 						</TabsList>
 
 
-						<TabsContent value="edit" className="flex-1 overflow-automt-0 pb-4">
-              <div className="space-y-3 mb-4 border-b border-border p-4">
-                <div>
-                  <Label htmlFor="title">Titre de l'élection</Label>
-                  <Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Élection 2025" />
-                </div>
-                <div>
-                  <Label htmlFor="location">Ville/Localité</Label>
-                  <Input id="location" value={currentCampaign.location} onChange={(e) => updateLocation(e.target.value)} placeholder="Ville" />
-                </div>
-              </div>
-							<div className="space-y-6 p-4">
-								<div>
-									<h3 className="font-semibold mb-3">Ajouter un candidat</h3>
-									<CandidateForm onAdd={addCandidate} />
-								</div>
+						<TabsContent value="edit" className="h-full">
+              <div className="h-full flex-1 flex flex-col justify-between overflow-auto mt-0 pb-8">
+                <div className="flex-1 flex flex-col">
+                  <div className="space-y-3 border-b border-border p-4">
+                    <h2 className="text-lg font-semibold">Formulaire Résultat de Campagne</h2>
+                    <div>
+                      <Label htmlFor="title">Titre de l'élection</Label>
+                      <Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Élection 2025" />
+                    </div>
+                    <div>
+                      <Label htmlFor="location">Ville/Localité</Label>
+                      <Input id="location" value={currentCampaign.location} onChange={(e) => updateLocation(e.target.value)} placeholder="Ville" />
+                    </div>
+                  </div>
+                  <div className="space-y-6 p-4">
+                    <div>
+                      <h3 className="font-semibold mb-3">Ajouter un candidat</h3>
+                      <CandidateForm onAdd={addCandidate} />
+                    </div>
+                    {currentCampaign.candidates.length > 0 && (
+                      <div className="flex-1">
+                        <h3 className="font-semibold mb-3">Candidats ({currentCampaign.candidates.length})</h3>
+                        <CandidateList candidates={currentCampaign.candidates} onUpdate={updateCandidate} onDelete={deleteCandidate} />
+                      </div>
+                    )}
 
-								{currentCampaign.candidates.length > 0 && (
-									<div className="flex-1">
-										<h3 className="font-semibold mb-3">Candidats ({currentCampaign.candidates.length})</h3>
-										<CandidateList candidates={currentCampaign.candidates} onUpdate={updateCandidate} onDelete={deleteCandidate} />
-									</div>
-								)}
-							</div>
 
-              <div className="flex gap-2 pb-8 px-4">
-                <Button onClick={handleNew} variant="outline" className="flex-1">
-                  <FileText className="mr-2 h-4 w-4" />
-                  Nouveau
-                </Button>
-                <Button onClick={handleSave} variant="default" className="flex-1">
-                  <Save className="mr-2 h-4 w-4" />
-                  Sauvegarder
-                </Button>
-                <Button onClick={handleDownload} variant="outline">
-                  <Download className="h-4 w-4" />
-                </Button>
+                  </div>
+                </div>
+
+                <div className="flex gap-2 pb-8 px-4">
+                  <Button onClick={handleNew} variant="outline" className="flex-1">
+                    <RotateCcw className="mr-2 h-4 w-4" />
+                    Réinitialiser
+                  </Button>
+                  <Button onClick={handleSave} variant="default" className="flex-1">
+                    <Save className="mr-2 h-4 w-4" />
+                    Sauvegarder
+                  </Button>
+                  <Button onClick={handleDownload} variant="outline">
+                    <Download className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
 						</TabsContent>
 
-						<TabsContent value="saved" className="flex-1 overflow-auto p-4 mt-0">
+						<TabsContent value="saved" className="flex flex-col flex-1 h-full p-4 mt-0">
+              <h2 className="text-lg font-semibold mb-2">Campagnes sauvegardées</h2>
 							<SavedCampaigns campaigns={campaigns} onLoad={loadCampaign} onDelete={deleteCampaign} currentCampaignId={currentCampaign.id} />
 						</TabsContent>
 					</Tabs>
-				</div>
 
 			</div>
 		</div>

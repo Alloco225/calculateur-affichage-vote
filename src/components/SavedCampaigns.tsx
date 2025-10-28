@@ -18,7 +18,7 @@ export const SavedCampaigns = ({
   currentCampaignId,
 }: SavedCampaignsProps) => {
   return (
-    <div className="space-y-2">
+    <div className="flex-1 space-y-2">
       {campaigns.length === 0 ? (
         <p className="text-sm text-muted-foreground text-center py-8">
           Aucune campagne sauvegardée
