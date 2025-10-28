@@ -28,7 +28,7 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
   const sortedCandidates = [...candidates].sort((a, b) => b.votes - a.votes);
 
   return (
-    <div className="flex-1 h-[300px] space-y-2 overflow-y-auto">
+    <div className="flex-1 h-[250px] space-y-2 overflow-y-auto">
       {sortedCandidates.map((candidate, index) => {
         const isEditing = editingId === candidate.id;
 

@@ -8,15 +8,10 @@ export const useCampaign = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [currentCampaign, setCurrentCampaign] = useState<Campaign>({
     id: "",
-    title: "Élection 2025",
-    location: "Ville",
+    title: "Vote 2025",
+    label: "",
+    labelValue: "",
     candidates: [
-      {
-        id: "1",
-        name: "string",
-        votes: 10,
-        color: "#ffE",
-      }
     ],
     createdAt: Date.now(),
     updatedAt: Date.now(),
@@ -75,8 +70,14 @@ export const useCampaign = () => {
     setCurrentCampaign({ ...currentCampaign, title });
   };
 
-  const updateLocation = (location: string) => {
-    setCurrentCampaign({ ...currentCampaign, location });
+  // const updateLocation = (location: string) => {
+  //   setCurrentCampaign({ ...currentCampaign, location });
+  // };
+  const updateLabel = (label: string) => {
+    setCurrentCampaign({ ...currentCampaign, label });
+  };
+  const updateLabelValue = (labelValue: string) => {
+    setCurrentCampaign({ ...currentCampaign, labelValue });
   };
 
   const addCandidate = (candidate: Candidate) => {
@@ -105,8 +106,9 @@ export const useCampaign = () => {
   const newCampaign = () => {
     const campaign: Campaign = {
       id: "",
-      title: "Élection 2025",
-      location: "Ville",
+      title: "Vote 2025",
+      label: "",
+      labelValue: "",
       candidates: [],
       createdAt: Date.now(),
       updatedAt: Date.now(),
@@ -122,7 +124,9 @@ export const useCampaign = () => {
     loadCampaign,
     deleteCampaign,
     updateTitle,
-    updateLocation,
+    // updateLocation,
+    updateLabel,
+    updateLabelValue,
     addCandidate,
     updateCandidate,
     deleteCandidate,

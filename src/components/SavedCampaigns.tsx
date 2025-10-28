@@ -36,7 +36,8 @@ export const SavedCampaigns = ({
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
                 <h4 className="font-medium text-sm truncate">{campaign.title}</h4>
-                <p className="text-xs text-muted-foreground">{campaign.location}</p>
+                <p className="text-xs text-muted-foreground">{campaign.label}</p>
+                <p className="text-xs text-muted-foreground">{campaign.labelValue}</p>
                 <p className="text-xs text-muted-foreground">
                   {campaign.candidates.length} candidat(s)
                 </p>

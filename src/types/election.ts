@@ -9,7 +9,8 @@ export interface Candidate {
 export interface Campaign {
   id: string;
   title: string;
-  location: string;
+  label: string;
+  labelValue: string;
   candidates: Candidate[];
   createdAt: number;
   updatedAt: number;

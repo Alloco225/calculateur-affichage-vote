@@ -20,7 +20,9 @@ interface CampaignSidebarContentProps {
   setActiveTab: (tab: string) => void;
   currentCampaign: Campaign;
   updateTitle: (title: string) => void;
-  updateLocation: (location: string) => void;
+  updateLocation?: (location: string) => void;
+  updateLabel: (label: string) => void;
+  updateLabelValue: (value: string) => void;
   addCandidate: (candidate: Omit<Candidate, "id">) => void;
   updateCandidate: (id: string, updatedCandidate: Partial<Candidate>) => void;
   deleteCandidate: (id: string) => void;
@@ -38,6 +40,8 @@ const CampaignSidebarContent = ({
   currentCampaign,
   updateTitle,
   updateLocation,
+  updateLabel,
+  updateLabelValue,
   addCandidate,
   updateCandidate,
   deleteCandidate,
@@ -48,6 +52,7 @@ const CampaignSidebarContent = ({
   loadCampaign,
   deleteCampaign,
 }: CampaignSidebarContentProps) => {
+
   return (
     <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 bg-background">
       <TabsList className="w-full rounded-none bg-background">
@@ -63,14 +68,21 @@ const CampaignSidebarContent = ({
         <div className="h-full flex-1 flex flex-col justify-between overflow-auto mt-0 pb-8">
           <div className="flex-1 flex flex-col">
             <div className="space-y-3 border-b border-border p-4">
-              <h2 className="text-lg font-semibold">Formulaire Résultat de Campagne</h2>
+              <h2 className="text-lg font-semibold">Formulaire Résultat de Votes</h2>
               <div>
-                <Label htmlFor="title">Titre de l'élection</Label>
-                <Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Élection 2025" />
+                <Label htmlFor="title">Titre</Label>
+                <Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Vote 2025" />
               </div>
-              <div>
-                <Label htmlFor="location">Ville/Localité</Label>
-                <Input id="location" value={currentCampaign.location} onChange={(e) => updateLocation(e.target.value)} placeholder="Ville" />
+              
+              <div className="flex gap-2">
+                <div>
+                  <Label htmlFor="label">Label</Label>
+                  <Input id="label" value={currentCampaign.label} onChange={(e) => updateLabel(e.target.value)} placeholder="Label" />
+                </div>
+                <div>
+                  <Label htmlFor="labelValue">Valeur</Label>
+                  <Input id="labelValue" value={currentCampaign.labelValue} onChange={(e) => updateLabelValue(e.target.value)} placeholder="Catégorie" />
+                </div>
               </div>
             </div>
             <div className="space-y-6 p-4">
@@ -119,7 +131,8 @@ const Index = () => {
     loadCampaign,
     deleteCampaign,
     updateTitle,
-    updateLocation,
+    updateLabel,
+    updateLabelValue,
     addCandidate,
     updateCandidate,
     deleteCandidate,
@@ -139,7 +152,7 @@ const Index = () => {
       });
 
       const link = document.createElement("a");
-      link.download = `${currentCampaign.title}-${currentCampaign.location}.png`;
+      link.download = `${currentCampaign.title}-${currentCampaign.label}-${currentCampaign.labelValue}.png`;
       link.href = dataCanvas.toDataURL();
       link.click();
 
@@ -163,10 +176,11 @@ const Index = () => {
 		<div className="flex h-screen w-full overflow-hidden">
 			{/* Canvas central */}
 			<div className="relative flex-1 bg-canvas overflow-auto">
-				<img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
+				{/* <img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" /> */}
+				<img src="/images/bg.jpg" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
 				<div className="absolute top-0 left-0 w-full h-full bg-white/60"></div>
 				<div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
-				<ChartCanvas title={currentCampaign.title} location={currentCampaign.location} candidates={currentCampaign.candidates} />
+				<ChartCanvas title={currentCampaign.title} label={currentCampaign.label} labelValue={currentCampaign.labelValue} candidates={currentCampaign.candidates} />
 
         {/* Mobile menu trigger (burger icon) - visible only on small screens */}
         <div className="absolute top-4 right-4 md:hidden z-50">
@@ -182,7 +196,9 @@ const Index = () => {
                 setActiveTab={setActiveTab}
                 currentCampaign={currentCampaign}
                 updateTitle={updateTitle}
-                updateLocation={updateLocation}
+                // updateLocation={updateLocation}
+                updateLabel={updateLabel}
+                updateLabelValue={updateLabelValue}
                 addCandidate={addCandidate}
                 updateCandidate={updateCandidate}
                 deleteCandidate={deleteCandidate}
@@ -205,7 +221,9 @@ const Index = () => {
           setActiveTab={setActiveTab}
           currentCampaign={currentCampaign}
           updateTitle={updateTitle}
-          updateLocation={updateLocation}
+          // updateLocation={updateLocation}
+          updateLabel={updateLabel}
+          updateLabelValue={updateLabelValue}
           addCandidate={addCandidate}
           updateCandidate={updateCandidate}
           deleteCandidate={deleteCandidate}
