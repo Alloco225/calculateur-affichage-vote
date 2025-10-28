@@ -63,12 +63,21 @@ const Index = () => {
   return (
     <div className="flex h-screen w-full overflow-hidden">
       {/* Canvas central */}
-      <div className="flex-1 bg-canvas overflow-auto">
-        <ChartCanvas
-          title={currentCampaign.title}
-          location={currentCampaign.location}
-          candidates={currentCampaign.candidates}
-        />
+      <div className="flex flex-col flex-1">
+        <div className="sticky top-0 p-3 border-b">
+          <h2 className="text-lg text-center">
+            Visualisateur de résultats de vote
+          </h2>
+        </div>        
+        <div className="relative flex-1 bg-canvas overflow-auto">
+          <img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
+          <ChartCanvas
+            title={currentCampaign.title}
+            location={currentCampaign.location}
+            candidates={currentCampaign.candidates}
+          />
+        </div>
       </div>
 
       {/* Panneau latéral droit */}

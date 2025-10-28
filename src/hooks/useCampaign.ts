@@ -10,7 +10,14 @@ export const useCampaign = () => {
     id: "",
     title: "Élection 2025",
     location: "Ville",
-    candidates: [],
+    candidates: [
+      {
+        id: "1",
+        name: "string",
+        votes: 10,
+        color: "#ffE",
+      }
+    ],
     createdAt: Date.now(),
     updatedAt: Date.now(),
   });

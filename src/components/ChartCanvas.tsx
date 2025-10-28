@@ -22,14 +22,18 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
   const sortedCandidates = [...candidates].sort((a, b) => b.votes - a.votes);
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-8" id="chart-canvas">
+    <div className="relative w-full h-full flex items-center justify-center p-8" id="chart-canvas">
       <div className="w-full max-w-5xl">
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold mb-4" style={{ color: "hsl(var(--foreground))" }}>
+          <div className="text-5xl inline-block font-bold mb-4 bg-[#B30A0C] text-white p-5 " >
             {title}
-          </h1>
-          <p className="text-2xl" style={{ color: "hsl(var(--muted-foreground))" }}>
-            Résultats - {location}
+          </div>
+          <p className="text-2xl text-white" >
+            Résultats
+            
+            <div className="text-5xl font-bold uppercase text-white">
+              {location}
+            </div>
           </p>
         </div>
 
@@ -40,21 +44,26 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
             </p>
           </div>
         ) : (
-          <div className="flex items-end justify-center gap-4 h-[500px]">
+          <div className="flex items-end justify-between gap-4 h-[500px]">
             {sortedCandidates.map((candidate) => {
               const percentage = totalVotes > 0 ? (candidate.votes / totalVotes) * 100 : 0;
-              const heightPercent = (candidate.votes / maxVotes) * 90;
+              const minTextHeight = 50; // in pixels
+              const imageHeight = 200 + minTextHeight; // height of the image in pixels
+              const barHeightPx = (percentage / 100) * 500; // 500px is the container height
+              const finalHeightPercent = barHeightPx < imageHeight ? (imageHeight / 500) * 100 : percentage;
+              const firstName = candidate.name.split(' ')[0];
+              const lastName = candidate.name.split(' ').slice(1).join(' ').toUpperCase();
 
               return (
                 <div
                   key={candidate.id}
-                  className="relative flex flex-col items-center justify-end flex-1 max-w-[200px]"
+                  className="relative h-full flex flex-col items-center justify-end flex-1 max-w-[200px]"
                 >
                   <div
-                    className="relative w-full rounded-t-lg transition-all duration-700 ease-out flex flex-col justify-between p-4"
+                    className="relative w-full transition-all duration-700 ease-out flex flex-col justify-between"
                     style={{
                       backgroundColor: candidate.color,
-                      height: animated ? `${heightPercent}%` : "0%",
+                      height: animated ? `${finalHeightPercent}%` : "0%",
                       minHeight: "100px",
                     }}
                   >
@@ -65,26 +74,30 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
                     </div>
 
                     {candidate.image && (
-                      <div className="flex justify-center">
+                      <div className="h-[200px] overflow-hidden flex justify-center">
                         <img
                           src={candidate.image}
                           alt={candidate.name}
-                          className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                          className="max-h-[200px] w-full object-cover"
                         />
                       </div>
                     )}
-                  </div>
 
-                  <div className="mt-3 text-center w-full">
-                    <p className="font-semibold text-sm" style={{ color: "hsl(var(--foreground))" }}>
-                      {candidate.name}
-                    </p>
+                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent to-black opacity-50">
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 w-full p-2 mt-3 text-center text-white">
+                        <p className="text-xl">{lastName}</p>
+                        <p className="font-semibold text-3xl uppercase">{firstName}</p>
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
         )}
+
+        <div className="h-2 bg-[#B30A0C] w-full mt-3"></div>
       </div>
     </div>
   );
