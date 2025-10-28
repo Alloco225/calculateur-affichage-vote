@@ -35,7 +35,7 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
         return (
           <div
             key={candidate.id}
-            className="p-3 rounded-lg flex items-center gap-3"
+            className="p-3 flex items-center gap-3"
             style={{
               backgroundColor: `${candidate.color}15`,
               borderColor: `${candidate.color}40`,
