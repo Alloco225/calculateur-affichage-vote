@@ -17,6 +17,7 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
   }, [candidates]);
 
   const totalVotes = candidates.reduce((sum, c) => sum + c.votes, 0);
+  const maxVotes = Math.max(...candidates.map(c => c.votes), 1);
 
   const sortedCandidates = [...candidates].sort((a, b) => b.votes - a.votes);
 
@@ -42,7 +43,7 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
           <div className="flex items-end justify-center gap-4 h-[500px]">
             {sortedCandidates.map((candidate) => {
               const percentage = totalVotes > 0 ? (candidate.votes / totalVotes) * 100 : 0;
-              const heightPercent = Math.max(percentage, 5);
+              const heightPercent = (candidate.votes / maxVotes) * 90;
 
               return (
                 <div
