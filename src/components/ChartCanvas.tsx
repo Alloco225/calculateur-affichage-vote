@@ -48,7 +48,7 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
               return (
                 <div
                   key={candidate.id}
-                  className="flex flex-col items-center justify-end flex-1 max-w-[200px]"
+                  className="relative flex flex-col items-center justify-end flex-1 max-w-[200px]"
                 >
                   <div
                     className="relative w-full rounded-t-lg transition-all duration-700 ease-out flex flex-col justify-between p-4"
