@@ -120,7 +120,7 @@ const Index = () => {
 								</div>
 
 								{currentCampaign.candidates.length > 0 && (
-									<div>
+									<div className="flex-1">
 										<h3 className="font-semibold mb-3">Candidats ({currentCampaign.candidates.length})</h3>
 										<CandidateList candidates={currentCampaign.candidates} onUpdate={updateCandidate} onDelete={deleteCandidate} />
 									</div>

@@ -67,28 +67,28 @@ export const CandidateForm = ({ onAdd }: CandidateFormProps) => {
   return (
 		<form onSubmit={handleSubmit} className="space-y-4">
 			<div className="relative flex items-stretch gap-2">
-				<div className="space-y-2">
+				<div className="flex flex-col space-y-2">
 					<Label htmlFor="image">Photo</Label>
 					<Input id="image" type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
 					<div
 						onClick={() => document.getElementById("image")?.click()}
-						className="h-auto w-32  border-2 border-border cursor-pointer flex items-center justify-center hover:bg-muted transition-colors">
+						className="flex-1 h-auto max-h-[120px] overflow-hidden w-32  border border-border cursor-pointer flex items-center justify-center bg-background hover:bg-muted transition-colors">
 						{image ? <img src={image} alt="Aperçu" className="w-full h-auto object-cover" /> : <Camera className="h-8 w-8 text-muted-foreground" />}
 					</div>
 				</div>
 
-        <div className="flex flex-col justify-between space-y-2">
-          <div className="space-y-2 flex-4">
+        <div className="flex flex-col justify-between gap-2">
+          <div className="space-y-1">
             <Label htmlFor="name">Nom du candidat</Label>
-            <Input id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom complet" />
+            <Input id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom et prénoms" />
           </div>
 
           <div className="flex gap-2">
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="votes">Nombre de voix</Label>
-              <Input id="votes" type="number" value={votes} onChange={(e) => setVotes(e.target.value)} placeholder="0" min="0" />
+              <Input id="votes" type="number" value={votes} className="text-end pr-2" onChange={(e) => setVotes(e.target.value)} placeholder="0" min="0" />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="color">Couleur</Label>
               <div className="flex gap-2 items-center">
                 <div className="relative">

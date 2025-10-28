@@ -28,27 +28,35 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
   const sortedCandidates = [...candidates].sort((a, b) => b.votes - a.votes);
 
   return (
-    <div className="space-y-2">
+    <div className="flex-1 h-[300px] space-y-2 overflow-y-auto">
       {sortedCandidates.map((candidate) => {
         const isEditing = editingId === candidate.id;
 
         return (
           <div
             key={candidate.id}
-            className="p-3 rounded-lg border border-border bg-card flex items-center gap-3"
+            className="p-3 rounded-lg flex items-center gap-3"
+            style={{
+              backgroundColor: `${candidate.color}15`,
+              borderColor: `${candidate.color}40`,
+              borderWidth: '1px',
+              borderStyle: 'solid'
+            }}
           >
             {candidate.image && (
               <img
                 src={candidate.image}
                 alt={candidate.name}
                 className="w-10 h-10 rounded-full object-cover"
+
+                style={{ borderColor: candidate.color, borderWidth: 2 }}
               />
             )}
 
-            <div
+            {/* <div
               className="w-4 h-4 rounded-full flex-shrink-0"
               style={{ backgroundColor: candidate.color }}
-            />
+            /> */}
 
             <div className="flex-1 min-w-0">
               {isEditing ? (
@@ -71,7 +79,10 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
                 </div>
               ) : (
                 <>
-                  <p className="font-medium text-sm truncate">{candidate.name}</p>
+                  <p className="font-medium text-sm truncate"
+                style={{ color: candidate.color }}
+                  
+                  >{candidate.name}</p>
                   <p className="text-xs text-muted-foreground">
                     {candidate.votes.toLocaleString()} voix
                   </p>
@@ -99,10 +110,10 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
               )}
               <Button
                 size="sm"
-                variant="ghost"
+                variant="outline"
                 onClick={() => onDelete(candidate.id)}
               >
-                <Trash2 className="h-4 w-4" />
+                <Trash2 className="h-4 w-4 text-destructive" />
               </Button>
             </div>
           </div>
