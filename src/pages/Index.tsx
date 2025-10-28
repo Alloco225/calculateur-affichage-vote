@@ -34,6 +34,9 @@ interface CampaignSidebarContentProps {
   deleteCampaign: (id: string) => void;
 }
 
+
+export const RequiredStar = () => <span className="text-red-500">*</span>;
+
 const CampaignSidebarContent = ({
   activeTab,
   setActiveTab,
@@ -68,9 +71,11 @@ const CampaignSidebarContent = ({
         <div className="h-full flex-1 flex flex-col justify-between overflow-auto mt-0 pb-8">
           <div className="flex-1 flex flex-col">
             <div className="space-y-3 border-b border-border p-4">
-              <h2 className="text-lg font-semibold">Formulaire Résultat de Votes</h2>
+              <h2 className="text-lg font-semibold">Formulaire Calcul de Résultats</h2>
               <div>
-                <Label htmlFor="title">Titre</Label>
+                <Label htmlFor="title">Titre
+                  <RequiredStar />
+                </Label>
                 <Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Vote 2025" />
               </div>
               
@@ -81,7 +86,7 @@ const CampaignSidebarContent = ({
                 </div>
                 <div>
                   <Label htmlFor="labelValue">Valeur</Label>
-                  <Input id="labelValue" value={currentCampaign.labelValue} onChange={(e) => updateLabelValue(e.target.value)} placeholder="Catégorie" />
+                  <Input id="labelValue" value={currentCampaign.labelValue} onChange={(e) => updateLabelValue(e.target.value)} placeholder="Valeur Label" />
                 </div>
               </div>
             </div>
@@ -175,7 +180,7 @@ const Index = () => {
   return (
 		<div className="flex h-screen w-full overflow-hidden">
 			{/* Canvas central */}
-			<div className="relative flex-1 bg-canvas overflow-auto">
+			<div className="relative flex-1 bg-canvas overflow-auto" id="chart-canvas">
 				{/* <img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" /> */}
 				<img src="/images/bg.jpg" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
 				<div className="absolute top-0 left-0 w-full h-full bg-white/60"></div>

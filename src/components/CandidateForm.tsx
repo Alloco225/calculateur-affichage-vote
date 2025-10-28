@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Candidate } from "@/types/election";
 import { Camera, Plus } from "lucide-react";
+import { RequiredStar } from "@/pages/Index";
 
 interface CandidateFormProps {
   onAdd: (candidate: Candidate) => void;
@@ -79,13 +80,18 @@ export const CandidateForm = ({ onAdd }: CandidateFormProps) => {
 
         <div className="flex flex-col justify-between gap-2">
           <div className="space-y-1">
-            <Label htmlFor="name">Nom du candidat</Label>
+            <Label htmlFor="name">Nom du candidat
+              <RequiredStar />
+            </Label>
             <Input id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom et prénoms" />
           </div>
 
           <div className="flex gap-2">
             <div className="space-y-1">
-              <Label htmlFor="votes">Nombre de voix</Label>
+              <Label htmlFor="votes">Nombre de voix
+
+                  <RequiredStar />
+              </Label>
               <Input id="votes" type="number" value={votes} className="text-end pr-2" onChange={(e) => setVotes(e.target.value)} placeholder="0" min="0" />
             </div>
             <div className="space-y-1">
