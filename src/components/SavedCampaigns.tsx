@@ -27,7 +27,7 @@ export const SavedCampaigns = ({
         campaigns.map((campaign) => (
           <div
             key={campaign.id}
-            className={`p-3 rounded-lg border ${
+            className={`p-3 border ${
               campaign.id === currentCampaignId
                 ? "border-accent bg-accent/10"
                 : "border-border bg-card"

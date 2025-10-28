@@ -62,58 +62,42 @@ const Index = () => {
 
   return (
 		<div className="flex h-screen w-full overflow-hidden">
+			{/* Canvas central */}
+			<div className="relative flex-1 bg-canvas overflow-auto">
+				<img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
+				<div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
+				<ChartCanvas title={currentCampaign.title} location={currentCampaign.location} candidates={currentCampaign.candidates} />
+			</div>
 
-				{/* Canvas central */}
-				<div className="relative flex-1 bg-canvas overflow-auto">
-					<img src="/images/background.webp" alt="Background" className="absolute z-0 top-0 left-0 w-full h-full object-cover" />
-					<div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
-					<ChartCanvas title={currentCampaign.title} location={currentCampaign.location} candidates={currentCampaign.candidates} />
+			{/* Panneau latéral droit */}
+			<div className="w-96 bg-card border-l border-border flex flex-col">
+				<div className="sticky top-0 p-3 border-b shadow">
+					<h2 className="text-xl font-bold text-center">Visualisateur de résultats de vote</h2>
 				</div>
-
-				{/* Panneau latéral droit */}
-				<div className="w-96 bg-card border-l border-border flex flex-col">
-					<div className="sticky top-0 p-3 border-b">
-						<h2 className="text-lg text-center">Visualisateur de résultats de vote</h2>
-					</div>
-					<div className="p-4 border-b border-border">
-						<div className="flex gap-2 mb-4">
-							<Button onClick={handleNew} variant="outline" className="flex-1">
-								<FileText className="mr-2 h-4 w-4" />
-								Nouveau
-							</Button>
-							<Button onClick={handleSave} variant="outline" className="flex-1">
-								<Save className="mr-2 h-4 w-4" />
-								Sauvegarder
-							</Button>
-							<Button onClick={handleDownload} variant="outline">
-								<Download className="h-4 w-4" />
-							</Button>
-						</div>
-
-						<div className="space-y-3">
-							<div>
-								<Label htmlFor="title">Titre de l'élection</Label>
-								<Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Élection 2025" />
-							</div>
-							<div>
-								<Label htmlFor="location">Ville/Localité</Label>
-								<Input id="location" value={currentCampaign.location} onChange={(e) => updateLocation(e.target.value)} placeholder="Ville" />
-							</div>
-						</div>
-					</div>
-
+				<div className="">
 					<Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
 						<TabsList className="w-full rounded-none">
 							<TabsTrigger value="edit" className="flex-1">
-								Éditer
+								Formulaire
 							</TabsTrigger>
 							<TabsTrigger value="saved" className="flex-1">
 								Sauvegardés
 							</TabsTrigger>
 						</TabsList>
 
-						<TabsContent value="edit" className="flex-1 overflow-auto p-4 mt-0">
-							<div className="space-y-6">
+
+						<TabsContent value="edit" className="flex-1 overflow-automt-0 pb-4">
+              <div className="space-y-3 mb-4 border-b border-border p-4">
+                <div>
+                  <Label htmlFor="title">Titre de l'élection</Label>
+                  <Input id="title" value={currentCampaign.title} onChange={(e) => updateTitle(e.target.value)} placeholder="Élection 2025" />
+                </div>
+                <div>
+                  <Label htmlFor="location">Ville/Localité</Label>
+                  <Input id="location" value={currentCampaign.location} onChange={(e) => updateLocation(e.target.value)} placeholder="Ville" />
+                </div>
+              </div>
+							<div className="space-y-6 p-4">
 								<div>
 									<h3 className="font-semibold mb-3">Ajouter un candidat</h3>
 									<CandidateForm onAdd={addCandidate} />
@@ -126,6 +110,20 @@ const Index = () => {
 									</div>
 								)}
 							</div>
+
+              <div className="flex gap-2 pb-8 px-4">
+                <Button onClick={handleNew} variant="outline" className="flex-1">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Nouveau
+                </Button>
+                <Button onClick={handleSave} variant="default" className="flex-1">
+                  <Save className="mr-2 h-4 w-4" />
+                  Sauvegarder
+                </Button>
+                <Button onClick={handleDownload} variant="outline">
+                  <Download className="h-4 w-4" />
+                </Button>
+              </div>
 						</TabsContent>
 
 						<TabsContent value="saved" className="flex-1 overflow-auto p-4 mt-0">
@@ -133,6 +131,8 @@ const Index = () => {
 						</TabsContent>
 					</Tabs>
 				</div>
+
+			</div>
 		</div>
 	);
 };

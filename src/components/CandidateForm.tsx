@@ -124,7 +124,7 @@ export const CandidateForm = ({ onAdd }: CandidateFormProps) => {
         </div>
 			</div>
 
-			<Button type="submit" className="w-full">
+			<Button type="submit" className="w-full rounded-none">
 				<Plus className="mr-2 h-4 w-4" />
 				Ajouter le candidat
 			</Button>

@@ -29,7 +29,7 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
 
   return (
     <div className="flex-1 h-[300px] space-y-2 overflow-y-auto">
-      {sortedCandidates.map((candidate) => {
+      {sortedCandidates.map((candidate, index) => {
         const isEditing = editingId === candidate.id;
 
         return (
@@ -43,6 +43,13 @@ export const CandidateList = ({ candidates, onUpdate, onDelete }: CandidateListP
               borderStyle: 'solid'
             }}
           >
+            <div
+                style={{ color: candidate.color }}
+            >
+              {index + 1}
+            </div>
+
+
             {candidate.image && (
               <img
                 src={candidate.image}
