@@ -22,7 +22,7 @@ export const ChartCanvas = ({ title, location, candidates }: ChartCanvasProps) =
   const sortedCandidates = [...candidates].sort((a, b) => b.votes - a.votes);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8" id="chart-canvas">
+    <div className="relative w-full h-full flex items-start justify-center p-8 pt-12" id="chart-canvas">
       <div className="w-full max-w-5xl">
         <div className="text-center mb-8">
           <div className="text-5xl inline-block font-bold mb-4 bg-[#B30A0C] text-white p-5 " >
