@@ -8,37 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
+    /* TYPOGRAPHY */
+    --font-michroma: 'Michroma', sans-serif;
+    --font-open-sans: 'Open Sans', sans-serif;
+    
+    /* PALETTE: LIGHT, TRUST, HI-TECH */
+    
+    /* NEUTRALS (Lightness and Clarity) */
+    --background: 200 23% 97%;   /* #F5F8FA - Off-White Background */
+    --card: 0 0% 100%;           /* #FFFFFF - Pure White Cards/Popovers */
+    --card-foreground: 215 69% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 215 69% 17%;
+    --border: 206 19% 83%;       /* #CCD4DA - Light Gray Borders/Separators */
+    --input: 206 19% 83%;        /* Match border for clean forms */
+    --foreground: 215 69% 17%;   /* #0E294A - Dark Blue Text (Main) */
+    --muted: 210 13% 40%;        /* #5A6772 - Dark Gray (Secondary Text) */
+    --muted-foreground: 210 13% 40%;
+    
+    /* PRIMARY (Trust and Authority - Blue) */
+    --primary: 215 69% 32%;      /* #194B8A - Medium Primary Blue */
+    --primary-foreground: 0 0% 100%; /* White text on dark primary */
+    
+    /* NEW: Darker Primary for deep accents/hovers (Tailwind config 'primary-dark') */
+    --primary-dark: 215 69% 17%; /* #0E294A */
+    
+    /* ACCENTS & FEEDBACK */
+    --secondary: 215 57% 56%;    /* #4D7DD0 - Light Blue Secondary/Hover */
+    --secondary-foreground: 215 69% 17%;
+    --accent: 215 57% 56%;       /* Light blue for non-key accents */
+    --accent-foreground: 215 69% 17%;
+    --ring: 215 57% 56%;         /* Light blue ring focus */
+    
+    --destructive: 4 70% 50%;    /* #D93025 - Error Red */
+    --destructive-foreground: 0 0% 100%;
 
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    /* NEW: Success Green (Tailwind config 'success') */
+    --success: 136 46% 42%;      /* #3B9C52 */
+    --success-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 220 13% 91%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 91% 60%;
-
+    /* Standard Radius */
     --radius: 0.5rem;
     
-    --canvas-bg: 0 0% 96%;
+    /* EXISTING CUSTOM COLORS */
+    --canvas-bg: 200 23% 97%; /* Match background for consistency */
     --sidebar-bg: 0 0% 100%;
     
     --chart-1: 25 95% 53%;
@@ -47,24 +60,19 @@ All colors MUST be HSL.
     --chart-4: 197 92% 61%;
     --chart-5: 240 60% 45%;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%; /* White sidebar */
+    --sidebar-foreground: 215 69% 17%; /* Dark blue text */
+    --sidebar-primary: 215 69% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 57% 56%;
+    --sidebar-accent-foreground: 215 69% 17%;
+    --sidebar-border: 206 19% 83%;
+    --sidebar-ring: 215 57% 56%;
   }
 
   .dark {
+    /* The provided dark mode definition is kept as-is, 
+       as no dark mode palette was specified for the government app. */
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -118,6 +126,8 @@ All colors MUST be HSL.
   }
 
   body {
+    /* Use the designated Open Sans font for high readability on body text */
     @apply bg-background text-foreground;
+    font-family: var(--font-open-sans); 
   }
 }
