@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
+# Vote Canvas Studio
 
-## Project info
+Une application web moderne et interactive pour créer et visualiser des données de campagne électorale avec de superbes graphiques et des toiles exportables.
 
-**URL**: https://lovable.dev/projects/6484375d-b675-4f31-ae9e-dfe46fad59a6
+## 🎯 Qu'est-ce que Vote Canvas Studio ?
 
-## How can I edit this code?
+Vote Canvas Studio est un outil complet conçu pour les campagnes politiques, les organisations de sondage et les passionnés de visualisation de données. Il permet aux utilisateurs de :
 
-There are several ways of editing your application.
+- **Créer des données de campagne** : Ajouter des candidats avec des nombres de voix, des couleurs et des images
+- **Visualiser les résultats** : Générer des graphiques interactifs
+- **Exporter les campagnes** : Télécharger les visualisations de campagne sous forme d'images
+- **Gérer plusieurs campagnes** : Sauvegarder, charger et organiser différents scénarios électoraux
+- **Conception réactive** : Fonctionne parfaitement sur les ordinateurs de bureau et les appareils mobiles
 
-**Use Lovable**
+## ✨ Fonctionnalités
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6484375d-b675-4f31-ae9e-dfe46fad59a6) and start prompting.
+- 📊 **Graphiques interactifs** : Graphiques à barres et circulaires dynamiques utilisant Recharts
+- 🎨 **Design personnalisable** : Candidats codés par couleur avec une image de marque personnalisée
+- 💾 **Gestion de campagne** : Sauvegarder et charger plusieurs campagnes localement
+- 📱 **Adapté aux mobiles** : Optimisé pour toutes les tailles d'écran
+- 🖼️ **Fonctionnalité d'exportation** : Télécharger les graphiques sous forme d'images de haute qualité
+- 🎯 **Mises à jour en temps réel** : Aperçu en direct des modifications au fur et à mesure de l'édition
+- 🏷️ **Étiquetage flexible** : Étiquettes et valeurs de graphique personnalisables
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Pile technologique
 
-**Use your preferred IDE**
+- **Frontend** : React 18 avec TypeScript
+- **Outil de build** : Vite
+- **Styling** : Tailwind CSS avec les composants shadcn/ui
+- **Graphiques** : Recharts pour la visualisation de données
+- **Gestion d'état** : React Query pour la récupération de données
+- **Formulaires** : React Hook Form avec validation Zod
+- **Icônes** : Lucide React
+- **Polices** : Michroma (titres) + Open Sans (corps de texte)
+- **Exportation** : html2canvas pour la génération d'images
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Démarrage rapide
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prérequis
 
-Follow these steps:
+- Node.js (v16 ou supérieur)
+- Gestionnaire de paquets npm, yarn ou pnpm
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Cloner le dépôt**
+   ```bash
+   git clone <your-repo-url>
+   cd vote-canvas-studio
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Installer les dépendances**
+   ```bash
+   # Avec npm
+   npm install
+   
+   # Avec yarn
+   yarn install
+   
+   # Avec pnpm
+   pnpm install
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3. **Démarrer le serveur de développement**
+   ```bash
+   # Avec npm
+   npm run dev
+   
+   # Avec yarn
+   yarn dev
+   
+   # Avec pnpm
+   pnpm dev
+   ```
 
-**Edit a file directly in GitHub**
+4. **Ouvrir votre navigateur**
+   Naviguez vers `http://localhost:5173` pour voir l'application.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📋 Scripts disponibles
 
-**Use GitHub Codespaces**
+- `npm run dev` - Démarrer le serveur de développement avec rechargement à chaud
+- `npm run build` - Construire pour la production
+- `npm run build:dev` - Construire pour le développement
+- `npm run preview` - Prévisualiser la version de production localement
+- `npm run lint` - Exécuter ESLint pour la qualité du code
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🎮 Comment utiliser
 
-## What technologies are used for this project?
+### Créer une campagne
 
-This project is built with:
+1. **Définir les détails de la campagne**
+   - Saisir un titre de campagne
+   - Ajouter un lieu (facultatif)
+   - Définir l'étiquette et la valeur du graphique (par exemple, "Votes", "Pourcentage")
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. **Ajouter des candidats**
+   - Cliquer sur "Ajouter un candidat" dans la barre latérale
+   - Saisir le nom du candidat et le nombre de voix
+   - Choisir une couleur pour le candidat
+   - Télécharger éventuellement une image
 
-## How can I deploy this project?
+3. **Visualiser les résultats**
+   - Afficher les graphiques en temps réel sur la toile principale
+   - Basculer entre différents types de graphiques
+   - Voir les mises à jour en direct au fur et à mesure que vous modifiez les données
 
-Simply open [Lovable](https://lovable.dev/projects/6484375d-b675-4f31-ae9e-dfe46fad59a6) and click on Share -> Publish.
+4. **Sauvegarder et exporter**
+   - Sauvegarder les campagnes pour une utilisation ultérieure
+   - Télécharger les graphiques sous forme d'images PNG
+   - Charger les campagnes précédemment sauvegardées
 
-## Can I connect a custom domain to my Lovable project?
+### Gérer les campagnes
 
-Yes, you can!
+- **Sauvegarder** : Stocker les données de la campagne actuelle localement
+- **Charger** : Récupérer les campagnes précédemment sauvegardées
+- **Supprimer** : Supprimer les campagnes indésirables
+- **Nouveau** : Commencer à zéro avec une campagne vierge
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🎨 Système de conception
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+L'application utilise un système de conception soigneusement élaboré avec :
+
+- **Palette de couleurs** : Thème professionnel basé sur le bleu, inspirant confiance et autorité
+- **Typographie** : Michroma pour les titres (moderne, axé sur la technologie) et Open Sans pour le corps de texte (lisible, fiable)
+- **Composants** : Composants shadcn/ui cohérents partout
+- **Réactif** : Conception "mobile-first" avec des mises en page adaptatives
+
+## 📁 Structure du projet
