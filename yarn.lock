@@ -2401,18 +2401,6 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-lovable-tagger@^1.1.11:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/lovable-tagger/-/lovable-tagger-1.1.11.tgz#a2d2ed8ccd117fd5eabd586fd637590acc16d645"
-  integrity sha512-G1gUZi8CebQpB/5+IHWYekRyeRFF2RR7iXSjGO+iVWpwlpa19swgYCYem2z+IkBJO0fKRYJ98xz4yhdt++MzLA==
-  dependencies:
-    "@babel/parser" "^7.25.9"
-    "@babel/types" "^7.25.8"
-    esbuild "^0.25.0"
-    estree-walker "^3.0.3"
-    magic-string "^0.30.12"
-    tailwindcss "^3.4.17"
-
 lru-cache@^10.2.0:
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
